@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		changelog.txt = changelog.txt
 		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
 		LICENSE.txt = LICENSE.txt
-		.nuget\nuget.config = .nuget\nuget.config
+		nuget.config = nuget.config
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -62,6 +62,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyProjectForHoldingTheNUnit2Reference", "Tests\DummyProjectForHoldingTheNUnit2Reference\DummyProjectForHoldingTheNUnit2Reference.csproj", "{DBEEB615-5991-46BC-B274-1516BD0F3D91}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecFlow.TestProjectGenerator", "SpecFlow.TestGenerator\SpecFlow.TestProjectGenerator\SpecFlow.TestProjectGenerator.csproj", "{FA04B445-D04C-4075-9EB0-4D0A70E47FC4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Licenses", "Licenses", "{D7B9D08E-67E6-4294-9E1F-2AB119571BD7}"
+	ProjectSection(SolutionItems) = preProject
+		Licenses\BoDi-LICENSE-Apache2.txt = Licenses\BoDi-LICENSE-Apache2.txt
+		Licenses\Gherkin-LICENSE-MIT.txt = Licenses\Gherkin-LICENSE-MIT.txt
+		Licenses\Newtonsoft.Json-LICENSE-MIT.md = Licenses\Newtonsoft.Json-LICENSE-MIT.md
+		Licenses\System.ValueTuple-LICENSE-MIT.txt = Licenses\System.ValueTuple-LICENSE-MIT.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

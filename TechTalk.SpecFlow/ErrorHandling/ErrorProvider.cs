@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using TechTalk.SpecFlow.Bindings;
 using TechTalk.SpecFlow.Bindings.Reflection;
 using TechTalk.SpecFlow.Configuration;
-using TechTalk.SpecFlow.Infrastructure;
 using TechTalk.SpecFlow.Tracing;
 using TechTalk.SpecFlow.UnitTestProvider;
 
@@ -24,6 +22,7 @@ namespace TechTalk.SpecFlow.ErrorHandling
         void ThrowPendingError(ScenarioExecutionStatus testStatus, string message);
         Exception GetTooManyBindingParamError(int maxParam);
         Exception GetNonStaticEventError(IBindingMethod method);
+        Exception GetObsoleteStepError(BindingObsoletion bindingObsoletion);
     }
 
     internal class ErrorProvider : IErrorProvider
@@ -41,8 +40,8 @@ namespace TechTalk.SpecFlow.ErrorHandling
 
         public string GetMethodText(IBindingMethod method)
         {
-            return string.Format("{0}.{1}({2})", method.Type.Name, method.Name,
-                string.Join(", ", method.Parameters.Select(p => p.Type.Name).ToArray()));
+            string parametersDisplayed = string.Join(", ", method.Parameters.Select(p => p.Type.Name).ToArray());
+            return $"{method.Type.AssemblyName}:{method.Type.FullName}.{method.Name}({parametersDisplayed})";
         }
 
         public Exception GetCallError(IBindingMethod method, Exception ex)
@@ -129,6 +128,11 @@ namespace TechTalk.SpecFlow.ErrorHandling
             throw new BindingException(
                 string.Format("The binding methods for before/after feature and before/after test run events must be static! {0}",
                 GetMethodText(method)));
+        }
+
+        public Exception GetObsoleteStepError(BindingObsoletion bindingObsoletion)
+        {
+            throw new BindingException(bindingObsoletion.Message);
         }
     }
 }
